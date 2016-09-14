@@ -9,6 +9,7 @@ public class NewMouseListener extends JPanel implements Constans {
 
     JLabel label;
     public Point point=new Point(10,10);
+    public Point apple =new Point(150,150);
     Dimension preferredSize= new Dimension(WINDOW_WIDTH,WINDOW_HEIGHT);
     public Dimension getPreferredSize() {
         return preferredSize;
@@ -35,11 +36,15 @@ public class NewMouseListener extends JPanel implements Constans {
         super.paintComponent(g);
         g.setColor(Color.GREEN);
         g.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+
+        g.setColor(Color.RED);
+        g.fillRect(apple.x, apple.y,5,5);
+
         g.setColor(color);
         if (point != null) {
             label.setText("Coordinates (x,y): " + point.x +
                     ", " + point.y);
-            g.fillRect(point.x, point.y, 10, 10);
+            g.fillRect(point.x, point.y, pointsizex, pointsizey);
         }
 
     }

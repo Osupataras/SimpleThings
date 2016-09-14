@@ -9,6 +9,8 @@ public interface Constans {
     public int WINDOW_WIDTH=300;
     public int WINDOW_HEIGHT=300;
     public Color color=Color.BLUE;
-    public int increment=5;
+    public int increment=1;
+    public int pointsizex=10;
+    public int pointsizey=10;
 
 }

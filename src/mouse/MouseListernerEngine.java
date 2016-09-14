@@ -15,11 +15,17 @@ public class MouseListernerEngine implements MouseListener,MouseMotionListener,C
     MouseListernerEngine(NewMouseListener listener){
         mouse=listener;
     }
+    public void eat(){
+        if (mouse.point.x>mouse.apple.x-pointsizex && mouse.point.x<mouse.apple.x+5 && mouse.point.y>mouse.apple.y-pointsizey && mouse.point.y<mouse.apple.y+5){
+            pointsizex+=5;
+            pointsizey+=5;
+        }
+        else{}
+    }
+
 
     public void mouseClicked(MouseEvent e) {
-//        mouse.point.x=e.getX();
-//        mouse.point.y=e.getY();
-//        mouse.repaint();
+
     }
 
 
@@ -68,6 +74,7 @@ public class MouseListernerEngine implements MouseListener,MouseMotionListener,C
             mouse.point.x-=increment;
             mouse.point.y-=increment;
         }
+        mouse.repaint();
 
     }
 }
