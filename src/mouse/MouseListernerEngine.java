@@ -17,9 +17,9 @@ public class MouseListernerEngine implements MouseListener,MouseMotionListener,C
     }
 
     public void mouseClicked(MouseEvent e) {
-        mouse.point.x=e.getX();
-        mouse.point.y=e.getY();
-        mouse.repaint();
+//        mouse.point.x=e.getX();
+//        mouse.point.y=e.getY();
+//        mouse.repaint();
     }
 
 
@@ -49,6 +49,25 @@ public class MouseListernerEngine implements MouseListener,MouseMotionListener,C
 
 
     public void mouseMoved(MouseEvent e) {
+        int mouse_x=e.getX();
+        int mouse_y=e.getY();
+
+        if (mouse_x>mouse.point.x && mouse_y>mouse.point.y){
+            mouse.point.x+=increment;
+            mouse.point.y+=increment;
+        }
+        else if(mouse_x>mouse.point.x && mouse_y<mouse.point.y){
+            mouse.point.x+=increment;
+            mouse.point.y-=increment;
+        }
+        else if(mouse_x<mouse.point.x && mouse_y>mouse.point.y){
+            mouse.point.x-=increment;
+            mouse.point.y+=increment;
+        }
+        else if(mouse_x<mouse.point.x && mouse_y<mouse.point.y){
+            mouse.point.x-=increment;
+            mouse.point.y-=increment;
+        }
 
     }
 }
