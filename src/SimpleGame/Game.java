@@ -1,31 +1,37 @@
-package mouse;
+package SimpleGame;
 
+
+import mouse.MouseListernerEngine;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 
-public class NewMouseListener extends JPanel implements Constans {
+public class Game extends JPanel implements Constans {
 
     JLabel label;
     public Point point=new Point(10,10);
-    public Point apple =new Point(150,150);
+    Random random;
+    public Point apple =new Point(50,50);
+    public int pointsizex=10;
+    public int pointsizey=10;
+
     Dimension preferredSize= new Dimension(WINDOW_WIDTH,WINDOW_HEIGHT);
     public Dimension getPreferredSize() {
         return preferredSize;
     }
 
     void addPaneltoFrame(Container container) {
-        container.setLayout(new BoxLayout(container,
-                BoxLayout.Y_AXIS));
+        container.setLayout(new BoxLayout(container,BoxLayout.Y_AXIS));
         container.add(this);
 
         label = new JLabel("Click to see coordinates");
         container.add(label);
     }
 
-    NewMouseListener() {
-        MouseListernerEngine mouseengine=new MouseListernerEngine(this);
+    Game() {
+        MouseListernerEngine mouseengine=new mouse.MouseListernerEngine(this);
         addMouseListener(mouseengine);
         addMouseMotionListener(mouseengine);
 
@@ -52,7 +58,7 @@ public class NewMouseListener extends JPanel implements Constans {
     public static void main(String[] args) {
         JFrame f = new JFrame("SimpleThingsMouse");
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        NewMouseListener mouse = new NewMouseListener();
+        Game mouse = new Game();
         mouse.addPaneltoFrame(f.getContentPane());
         f.pack();
         f.setVisible(true);

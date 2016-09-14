@@ -1,26 +1,37 @@
 package mouse;
 
-import java.awt.*;
+
+import SimpleGame.Constans;
+import SimpleGame.Game;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.Random;
 
-public class MouseListernerEngine implements MouseListener,MouseMotionListener,Constans {
+public class MouseListernerEngine implements MouseListener,MouseMotionListener, Constans {
 
 
-    NewMouseListener mouse;
-    public int coordinate_x=coordinate_x_start;
-    public int coordinate_y=coordinate_y_start;
+    Game mouse;
+    Random random=new Random();
 
-    MouseListernerEngine(NewMouseListener listener){
+    public MouseListernerEngine(Game listener){
         mouse=listener;
     }
     public void eat(){
-        if (mouse.point.x>mouse.apple.x-pointsizex && mouse.point.x<mouse.apple.x+5 && mouse.point.y>mouse.apple.y-pointsizey && mouse.point.y<mouse.apple.y+5){
-            pointsizex+=5;
-            pointsizey+=5;
+        if (mouse.point.x>mouse.apple.x-mouse.pointsizex && mouse.point.x<mouse.apple.x+5
+                && mouse.point.y>mouse.apple.y-mouse.pointsizey && mouse.point.y<mouse.apple.y+5){
+            mouse.pointsizex+=5;
+            mouse.pointsizey+=5;
+            mouse.apple.x=random.nextInt(WINDOW_WIDTH);
+            mouse.apple.y=random.nextInt(WINDOW_HEIGHT);
         }
-        else{}
+
+    }
+
+    public void applemove(){
+        int movedirection=random.nextInt(3);
+
     }
 
 
@@ -74,6 +85,7 @@ public class MouseListernerEngine implements MouseListener,MouseMotionListener,C
             mouse.point.x-=increment;
             mouse.point.y-=increment;
         }
+        eat();
         mouse.repaint();
 
     }
